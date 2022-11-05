@@ -1,5 +1,4 @@
-import { StyleSheet } from 'react-native';
-import { NativeBaseProvider, Center, Text } from 'native-base';
+import { NativeBaseProvider, StatusBar } from 'native-base';
 
 import { useFonts,
          Roboto_400Regular,
@@ -16,22 +15,12 @@ export default function App() {
 
   return (
     <NativeBaseProvider theme={THEME}>
-      <Center flex={1} bgColor="gray.900">
-        {fontsLoaded ? <SignIn /> : <Loading />}
-      </Center>
+      <StatusBar
+        barStyle="light-content"
+        backgroundColor="transparent"
+        translucent
+      />
+      {fontsLoaded ? <SignIn /> : <Loading />}
     </NativeBaseProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#000',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-
-  title: {
-    color: '#fff',
-  }
-});
