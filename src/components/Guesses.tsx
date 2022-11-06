@@ -3,12 +3,16 @@ import { useEffect, useState } from 'react';
 import { api } from '../services/api';
 
 import { Game, GameProps } from '../components/Game';
+import { EmptyMyPoolList } from './EmptyMyPoolList';
+import { ItemClick } from 'native-base/lib/typescript/components/composites/Typeahead/useTypeahead/types';
+import { Share } from 'react-native';
 
 interface Props {
   poolId: string;
+  code: string;
 }
 
-export function Guesses({ poolId }: Props) {
+export function Guesses({ poolId, code }: Props) {
   const [isLoading, setIsLoading] = useState(true);
   const [games, setGames] = useState<GameProps[]>([]);
   const [first_team_points, set_first_team_points] = useState('');
@@ -88,6 +92,8 @@ export function Guesses({ poolId }: Props) {
           onGuessConfirm={()=> handle_guess_confirm(item.id)}
         />
       )}
+      _contentContainerStyle={{ pb: 10 }}
+      ListEmptyComponent={() => <EmptyMyPoolList code={code} />}
     />
   )
 }
