@@ -9,14 +9,14 @@ interface GuessProps {
   gameId: string;
   createdAt: string;
   participantId: string;
-  firstTeamPoints: number;
-  secondTeamPoints: number;
+  first_team_points: number;
+  second_team_points: number;
 }
 
 export interface GameProps {
   id: string;
-  firstTeamCountryCode: string;
-  secondTeamCountryCode: string;
+  first_team_country_code: string;
+  second_team_country_code: string;
   guess: null | GuessProps;
 };
 
@@ -27,7 +27,8 @@ interface Props {
   setSecondTeamPoints: (value: string) => void;
 };
 
-export function Game({ data, setFirstTeamPoints, setSecondTeamPoints, onGuessConfirm }: Props) {
+export function Game({ data,
+  setFirstTeamPoints, setSecondTeamPoints, onGuessConfirm }: Props) {
   const { colors, sizes } = useTheme();
 
   return (
@@ -42,7 +43,7 @@ export function Game({ data, setFirstTeamPoints, setSecondTeamPoints, onGuessCon
       p={4}
     >
       <Text color="gray.100" fontFamily="heading" fontSize="sm">
-        {getName(data.firstTeamCountryCode)} vs. {getName(data.secondTeamCountryCode)}
+        {getName(data.first_team_country_code)} vs. {getName(data.second_team_country_code)}
       </Text>
 
       <Text color="gray.200" fontSize="xs">
@@ -51,7 +52,7 @@ export function Game({ data, setFirstTeamPoints, setSecondTeamPoints, onGuessCon
 
       <HStack mt={4} w="full" justifyContent="space-between" alignItems="center">
         <Team
-          code={data.firstTeamCountryCode}
+          code={data.first_team_country_code}
           position="right"
           onChangeText={setFirstTeamPoints}
         />
@@ -59,7 +60,7 @@ export function Game({ data, setFirstTeamPoints, setSecondTeamPoints, onGuessCon
         <X color={colors.gray[300]} size={sizes[6]} />
 
         <Team
-          code={data.secondTeamCountryCode}
+          code={data.second_team_country_code}
           position="left"
           onChangeText={setSecondTeamPoints}
         />

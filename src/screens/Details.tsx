@@ -10,6 +10,7 @@ import { PoolHeader } from "../components/PoolHeader";
 import { EmptyMyPoolList } from "../components/EmptyMyPoolList";
 import { Option } from "../components/Option";
 import { Share } from "react-native";
+import { Guesses } from "../components/Guesses";
 
 interface RouteParams {
   id: string;
@@ -87,6 +88,8 @@ export function Details() {
                 onPress={() => setOptionSelected('ranking')}
               />
             </HStack>
+
+            <Guesses poolId={pool_details.id} />
           </VStack>
         ) : <EmptyMyPoolList code={pool_details.code}/>
       }
